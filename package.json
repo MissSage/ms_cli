@@ -58,5 +58,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "bin": "./bin/ms-cli.js"
+  "bin": "./bin/ms-cli.js",
+  "type": "module"
 }
