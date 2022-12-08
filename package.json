@@ -1,10 +1,32 @@
 {
-  "name": "ms_api",
+  "name": "@missssage/ms_cli",
   "version": "1.0.0",
   "description": "a api project useing typescript",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "author": "MissSage",
+  "keywords": [
+    "typescript",
+    "cli",
+    "MissSage",
+    "脚手架",
+    "ms_cli",
+    "ms-cli",
+    "ms cli",
+    "ms"
+  ],
+  "files": [
+    "package.json",
+    "README.md",
+    "lib"
+  ],
   "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.1.2",
+    "clear-console": "^1.1.0",
+    "commander": "^9.4.1",
+    "inquirer": "^9.1.4",
+    "shelljs": "^0.8.5"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
@@ -28,11 +50,13 @@
     "commit:comment": "引导设置规范化的提交信息",
     "commit": "cz",
     "build:comment": "构建",
-    "build": "npm run eslint && npm run prettier && rm -rf lib && tsc --build"
+    "build": "npm run eslint && npm run prettier && rm -rf lib && tsc --build",
+    "ts-cli": "./b"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "bin": "./bin/ms-cli.js"
 }
