@@ -1,7 +1,6 @@
 import { program } from 'commander';
 import create from './order/create';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+
 // ts-cli -v、ts-cli --version
 // 临时禁用规则，保证这里可以通过 require 方法获取 package.json 中的版本号
 /* eslint-disable @typescript-eslint/no-var-requires */

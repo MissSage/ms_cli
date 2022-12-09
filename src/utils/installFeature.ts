@@ -4,7 +4,7 @@
 import * as shell from 'shelljs';
 import { writeFileSync } from 'fs';
 import { PackageJSON, printMsg, readJsonFile, writeJsonFile } from './common';
-import chalk from 'chalk';
+import { red } from 'chalk';
 
 /**
  * 安装 ESLint
@@ -38,11 +38,9 @@ export function installESLint(): void {
   try {
     writeFileSync('./.eslintrc.js', eslintrc, { encoding: 'utf-8' });
   } catch (err) {
-    printMsg(`${chalk.red('Failed to write .eslintrc.js file content')}`);
-    printMsg(
-      `${chalk.red('Please add the following content in .eslintrc.js')}`,
-    );
-    printMsg(`${chalk.red(eslintrc)}`);
+    printMsg(`${red('Failed to write .eslintrc.js file content')}`);
+    printMsg(`${red('Please add the following content in .eslintrc.js')}`);
+    printMsg(`${red(eslintrc)}`);
   }
 
   // 改写 package.json
@@ -100,11 +98,9 @@ export function installPrettier(): void {
   try {
     writeFileSync('./.prettierrc.js', prettierrc, { encoding: 'utf-8' });
   } catch (err) {
-    printMsg(`${chalk.red('Failed to write .prettierrc.js file content')}`);
-    printMsg(
-      `${chalk.red('Please add the following content in .prettierrc.js')}`,
-    );
-    printMsg(`${chalk.red(prettierrc)}`);
+    printMsg(`${red('Failed to write .prettierrc.js file content')}`);
+    printMsg(`${red('Please add the following content in .prettierrc.js')}`);
+    printMsg(`${red(prettierrc)}`);
   }
   // 改写 package.json
   const packageJson = readJsonFile<PackageJSON>('./package.json');
@@ -130,15 +126,11 @@ export function installCZ(): void {
   try {
     writeFileSync('./commitlint.config.js', commitlint, { encoding: 'utf-8' });
   } catch (err) {
+    printMsg(`${red('Failed to write commitlint.config.js file content')}`);
     printMsg(
-      `${chalk.red('Failed to write commitlint.config.js file content')}`,
+      `${red('Please add the following content in commitlint.config.js')}`,
     );
-    printMsg(
-      `${chalk.red(
-        'Please add the following content in commitlint.config.js',
-      )}`,
-    );
-    printMsg(`${chalk.red(commitlint)}`);
+    printMsg(`${red(commitlint)}`);
   }
   // 改写 package.json
   const packageJson = readJsonFile<PackageJSON>('./package.json');

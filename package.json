@@ -21,10 +21,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "chalk": "^5.1.2",
+    "chalk": "^4.1.0",
     "clear-console": "^1.1.0",
     "commander": "^9.4.1",
-    "inquirer": "^9.1.4",
+    "inquirer": "^8.0.0",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
@@ -58,6 +58,5 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "bin": "./bin/ms-cli.js",
-  "type": "module"
+  "bin": "./bin/ms-cli.js"
 }

@@ -12,9 +12,9 @@ import {
 } from '../utils/common';
 import { existsSync } from 'fs';
 import { prompt } from 'inquirer';
+import { blue, cyan, gray, red, yellow } from 'chalk';
 import * as shell from 'shelljs';
 import * as installFeatureMethod from './installFeature';
-import chalk from 'chalk';
 
 /**
  * 验证当前目录下是否已经存在指定文件，如果存在则退出进行
@@ -25,7 +25,7 @@ export function isFileExist(filename: string): void {
   const file = getProjectPath(filename);
   // 验证文件是否已经存在，存在则推出进程
   if (existsSync(file)) {
-    printMsg(chalk.red(`${file} 已经存在`));
+    printMsg(red(`${file} 已经存在`));
     process.exit(1);
   }
 }
@@ -39,7 +39,7 @@ export async function selectFeature(): Promise<Array<string>> {
   clearConsole();
   // 输出信息
   /* eslint-disable @typescript-eslint/no-var-requires */
-  printMsg(chalk.blue(`TS CLI v${require('../../package.json').version}`));
+  printMsg(blue(`TS CLI v${require('../../package.json').version}`));
   printMsg('Start initializing the project:');
   printMsg('');
   // 选择功能，这里配合 下面的 installFeature 方法 和 ./installFeature.ts 文件为脚手架提供了良好的扩展机制
@@ -185,10 +185,10 @@ function installHusky(feature: Array<string>): void {
  * 整个项目安装结束，给用户提示信息
  */
 export function end(projectName: string): void {
-  printMsg(`Successfully created project ${chalk.yellow(projectName)}`);
+  printMsg(`Successfully created project ${yellow(projectName)}`);
   printMsg('Get started with the following commands:');
   printMsg('');
-  printMsg(`${chalk.gray('$')} ${chalk.cyan('cd ' + projectName)}`);
-  printMsg(`${chalk.gray('$')} ${chalk.cyan('npm run dev')}`);
+  printMsg(`${gray('$')} ${cyan('cd ' + projectName)}`);
+  printMsg(`${gray('$')} ${cyan('npm run dev')}`);
   printMsg('');
 }
