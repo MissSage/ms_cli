@@ -20,6 +20,7 @@ export declare function changePackageInfo(projectName: string): void;
  * 安装 typescript 并初始化
  */
 export declare function installTSAndInit(): void;
+export declare function initSrc(): void;
 /**
  * 安装 @types/node
  * 这是 node.js 的类型定义包

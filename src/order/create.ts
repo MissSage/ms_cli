@@ -6,6 +6,7 @@ import {
   changePackageInfo,
   end,
   initProjectDir,
+  initSrc,
   installDevEnviroment,
   installFeature,
   installTSAndInit,
@@ -32,6 +33,8 @@ export default async function create(projecrName: string): Promise<void> {
   installDevEnviroment();
   // 安装 feature
   installFeature(feature);
+  // 初始化src目录
+  initSrc();
   // 结束
   end(projecrName);
 }

@@ -64,8 +64,10 @@ export async function selectFeature(): Promise<Array<string>> {
  * 初始化项目目录
  */
 export function initProjectDir(projectName: string): void {
+  printMsg(`Making dir: ${projectName}...`);
   shell.exec(`mkdir ${projectName}`);
   shell.cd(projectName);
+  printMsg('Initting package.json...');
   shell.exec('npm init -y');
 }
 
@@ -82,6 +84,7 @@ export function changePackageInfo(projectName: string): void {
  * 安装 typescript 并初始化
  */
 export function installTSAndInit(): void {
+  printMsg('Installing typescript...');
   // 安装 typescript 并执行命令 tsc --init 生成 tsconfig.json
   shell.exec('npm i typescript -D && npx tsc --init');
   // 覆写 tsconfig.json
@@ -107,16 +110,19 @@ export function installTSAndInit(): void {
     },
     exclude: ['lib', 'node_modules'],
   };
+  printMsg('Generatting tsconfig.json...');
   writeJsonFile<JSON>('./tsconfig.json', tsconfigJson);
+}
+export function initSrc(): void {
   // 创建 src 目录和 /src/index.ts
   shell.exec('mkdir src && touch src/index.ts');
 }
-
 /**
  * 安装 @types/node
  * 这是 node.js 的类型定义包
  */
 export function installTypesNode(): void {
+  printMsg('Installing @types/node...');
   shell.exec('npm i @types/node -D');
 }
 
@@ -124,6 +130,7 @@ export function installTypesNode(): void {
  * 安装开发环境，支持实时编译
  */
 export function installDevEnviroment(): void {
+  printMsg('Initializing development environment...');
   shell.exec('npm i ts-node-dev -D');
   /**
    * 在 package.json 的 scripts 中增加如下内容
@@ -159,6 +166,7 @@ export function installFeature(feature: Array<string>): void {
  * @param feature 用户选择的功能列表
  */
 function installHusky(feature: Array<string>): void {
+  printMsg('Initializing husky...');
   // feature 副本
   const featureBak = JSON.parse(JSON.stringify(feature));
 
