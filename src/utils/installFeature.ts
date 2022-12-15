@@ -4,13 +4,13 @@
 import * as shell from 'shelljs';
 import { writeFileSync } from 'fs';
 import { PackageJSON, printMsg, readJsonFile, writeJsonFile } from './common';
-import { red } from 'chalk';
+import { cyan, red } from 'chalk';
 
 /**
  * 安装 ESLint
  */
 export function installESLint(): void {
-  printMsg('Initializing eslint...');
+  printMsg(cyan('Initializing eslint...'));
   shell.exec(
     'npm i eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin -D',
   );
@@ -56,7 +56,7 @@ export function installESLint(): void {
  * 安装 Prettier
  */
 export function installPrettier(): void {
-  printMsg('Initializing prettier...');
+  printMsg(cyan('Initializing prettier...'));
   shell.exec('npm i prettier -D');
   // 添加 .prettierrc.js
   const prettierrc = `module.exports = {
@@ -116,7 +116,7 @@ export function installPrettier(): void {
  * 安装 CZ，规范 git 提交信息
  */
 export function installCZ(): void {
-  printMsg('Initializing commitizen...');
+  printMsg(cyan('Initializing commitizen...'));
   shell.exec(
     'npx commitizen init cz-conventional-changelog --save --save-exact',
   );
@@ -151,10 +151,10 @@ export function installHusky(
   hooks: { [key: string]: string },
   lintStaged: Array<string>,
 ): void {
-  printMsg('Initializing git...');
+  printMsg(cyan('Initializing git...'));
   // 初始化 git 仓库
   shell.exec('git init');
-  printMsg('Installing husky lint-staged...');
+  printMsg(cyan('Installing husky lint-staged...'));
   // 在安装 husky 和 lint-staged
   shell.exec('npm i husky lint-staged -D');
   // 设置 package.json
