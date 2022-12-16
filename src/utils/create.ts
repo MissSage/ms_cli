@@ -113,6 +113,9 @@ export function installTSAndInit(): void {
   printMsg(cyan('Generatting tsconfig.json...'));
   writeJsonFile<JSON>('./tsconfig.json', tsconfigJson);
 }
+/**
+ * 初始化src目录
+ */
 export function initSrc(): void {
   // 创建 src 目录和 /src/index.ts
   shell.exec('mkdir src && touch src/index.ts');
